@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const [role, setRole] = useState("developer");
+  const navigate = useNavigate();
 
   return (
     <div
@@ -50,7 +52,7 @@ export default function Home() {
         </div>
 
         {/* Dynamic Text */}
-        <p className="text-gray-600 dark:text-gray-300 mb-8 transition-all duration-300">
+        <p className="text-gray-600 dark:text-gray-300 mb-8">
           {role === "recruiter" &&
             "I build scalable applications and love solving real-world problems."}
           {role === "developer" &&
@@ -59,16 +61,23 @@ export default function Home() {
             "Hey 👀 thanks for visiting! This is my digital space."}
         </p>
 
-        {/* CTA Buttons */}
+        {/* Buttons */}
         <div className="flex justify-center gap-4 flex-wrap">
-          <button className="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 shadow-md">
+          <button
+            onClick={() => navigate("/projects")}
+            className="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3 rounded-lg"
+          >
             View Projects
           </button>
 
-          <button className="border border-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-all duration-300">
+          <button
+            onClick={() => navigate("/contact")}
+            className="border border-gray-400 px-6 py-3 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700"
+          >
             Contact Me
           </button>
         </div>
+
       </div>
     </div>
   );
