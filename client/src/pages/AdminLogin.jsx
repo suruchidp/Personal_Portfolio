@@ -20,7 +20,7 @@ export default function AdminLogin() {
       <form onSubmit={login} className="space-y-4">
         <input className="w-full p-2 border rounded" value={email} onChange={(e) => setEmail(e.target.value)} />
         <input className="w-full p-2 border rounded" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <button className="pretty-btn bg-indigo-600 text-white">Login</button>
+        <button className="px-4 py-2 bg-indigo-600 text-white rounded">Login</button>
       </form>
     </section>
   );

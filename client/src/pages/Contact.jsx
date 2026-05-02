@@ -19,7 +19,7 @@ export default function Contact() {
         <input className="w-full p-2 rounded border" placeholder="Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
         <input className="w-full p-2 rounded border" placeholder="Email" type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required />
         <textarea className="w-full p-2 rounded border" rows="5" placeholder="Message" value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} required />
-        <button className="pretty-btn bg-indigo-600 text-white">Send</button>
+        <button className="bg-indigo-600 text-white px-4 py-2 rounded">Send</button>
       </form>
       {status && <p className="mt-4 text-green-600">{status}</p>}
     </section>
