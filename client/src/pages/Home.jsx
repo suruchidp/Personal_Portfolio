@@ -1,39 +1,75 @@
-import { useState } from 'react';
-
-const contentByRole = {
-  Recruiter: 'I build scalable full-stack products with clean architecture and business impact.',
-  Developer: 'I enjoy writing modular code, building APIs, and creating smooth user experiences.',
-  Friend: 'Thanks for visiting! I love tech, learning, and building useful things.'
-};
+import { useState } from "react";
 
 export default function Home() {
-  const [role, setRole] = useState(localStorage.getItem('role') || 'Recruiter');
-
-  const handleRole = (selectedRole) => {
-    setRole(selectedRole);
-    localStorage.setItem('role', selectedRole);
-  };
+  const [role, setRole] = useState("developer");
 
   return (
-    <section className="max-w-4xl mx-auto p-6">
-      <div className="text-center py-12">
-        <h2 className="text-4xl font-extrabold text-slate-900 dark:text-white">Hi, I&apos;m Suruchi</h2>
-        <p className="mt-4 text-lg text-slate-600 dark:text-slate-300">Full-stack developer building modern web apps</p>
-      </div>
+    <div
+      className="
+        min-h-screen flex items-center justify-center px-4
+        bg-white text-black
+        dark:bg-gradient-to-br dark:from-slate-900 dark:via-blue-900 dark:to-slate-800
+        dark:text-white
+        transition-all duration-500
+      "
+    >
+      <div className="text-center max-w-3xl">
 
-      <div className="flex gap-3 justify-center mb-6">
-        {Object.keys(contentByRole).map((roleOption) => (
-          <button
-            key={roleOption}
-            onClick={() => handleRole(roleOption)}
-            className={`px-4 py-2 rounded ${role === roleOption ? 'bg-indigo-600 text-white' : 'bg-slate-200 dark:bg-slate-700 dark:text-white'}`}
-          >
-            {roleOption}
+        {/* Profile Image */}
+        <img
+          src="https://static.vecteezy.com/system/resources/previews/042/332/098/non_2x/default-avatar-profile-icon-grey-photo-placeholder-female-no-photo-images-for-unfilled-user-profile-greyscale-illustration-for-socail-media-web-vector.jpg"
+          alt="profile"
+          className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-indigo-400 shadow-lg"
+        />
+
+        {/* Heading */}
+        <h1 className="text-4xl md:text-6xl font-bold mb-4">
+          Hi, I'm <span className="text-indigo-500 dark:text-indigo-400">Suruchi</span> 👋
+        </h1>
+
+        {/* Subtitle */}
+        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-6">
+          Full-stack developer crafting modern web experiences
+        </p>
+
+        {/* Role Buttons */}
+        <div className="flex justify-center gap-3 mb-6 flex-wrap">
+          {["recruiter", "developer", "friend"].map((r) => (
+            <button
+              key={r}
+              onClick={() => setRole(r)}
+              className={`px-4 py-2 rounded-lg transition-all duration-300 ${
+                role === r
+                  ? "bg-indigo-500 text-white shadow-md"
+                  : "bg-gray-200 text-black hover:bg-gray-300 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
+              }`}
+            >
+              {r}
+            </button>
+          ))}
+        </div>
+
+        {/* Dynamic Text */}
+        <p className="text-gray-600 dark:text-gray-300 mb-8 transition-all duration-300">
+          {role === "recruiter" &&
+            "I build scalable applications and love solving real-world problems."}
+          {role === "developer" &&
+            "I enjoy working with React, Node.js, and building APIs."}
+          {role === "friend" &&
+            "Hey 👀 thanks for visiting! This is my digital space."}
+        </p>
+
+        {/* CTA Buttons */}
+        <div className="flex justify-center gap-4 flex-wrap">
+          <button className="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 shadow-md">
+            View Projects
           </button>
-        ))}
-      </div>
 
-      <p className="text-center text-slate-700 dark:text-slate-200 text-lg">{contentByRole[role]}</p>
-    </section>
+          <button className="border border-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 px-6 py-3 rounded-lg transition-all duration-300">
+            Contact Me
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
